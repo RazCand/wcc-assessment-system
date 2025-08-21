@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "wcc-assessment-system",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
