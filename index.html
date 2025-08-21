@@ -1,0 +1,131 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Assessment System</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .tool-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+        .tool-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #f3f4f6;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .tool-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .tool-description {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .tool-button {
+            background: #2563eb;
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+        .tool-button:hover {
+            background: #1d4ed8;
+        }
+        .tool-button.secondary {
+            background: #059669;
+        }
+        .tool-button.secondary:hover {
+            background: #047857;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1 class="hero-title">WCC Assessment System</h1>
+        <p class="hero-subtitle">Streamlined client evaluation and project tracking</p>
+    </div>
+
+    <div class="tool-grid">
+        <div class="tool-card">
+            <div class="tool-icon">📋</div>
+            <h2 class="tool-title">New Assessment</h2>
+            <p class="tool-description">
+                Evaluate new clients and projects using our comprehensive assessment framework. 
+                Get immediate recommendations on margin guidance and project prioritization.
+            </p>
+            <a href="assessment.html" class="tool-button">Start Assessment</a>
+        </div>
+
+        <div class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h2 class="tool-title">Assessment Dashboard</h2>
+            <p class="tool-description">
+                View and analyze all completed assessments. Track client relationships, 
+                project outcomes, and identify patterns in your decision-making process.
+            </p>
+            <a href="dashboard.html" class="tool-button secondary">View Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        // Add assessment count to dashboard button
+        document.addEventListener('DOMContentLoaded', function() {
+            const assessments = JSON.parse(localStorage.getItem('wcc_assessments') || '[]');
+            const dashboardCard = document.querySelector('.tool-card:last-child .tool-description');
+            if (assessments.length > 0) {
+                dashboardCard.innerHTML += `<br><strong>${assessments.length} assessments completed</strong>`;
+            }
+        });
+    </script>
+</body>
+</html>

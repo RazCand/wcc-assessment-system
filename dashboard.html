@@ -1,0 +1,160 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCC Assessment Dashboard</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1 class="dashboard-title">Assessment Dashboard</h1>
+                <div class="header-actions">
+                    <a href="assessment.html" class="btn btn-primary">New Assessment</a>
+                    <a href="index.html" class="btn btn-secondary">Home</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Cards -->
+        <div class="summary-section">
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon">📊</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="total-assessments">0</div>
+                        <div class="summary-label">Total Assessments</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">✅</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="approved-projects">0</div>
+                        <div class="summary-label">Approved Projects</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">❌</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="declined-projects">0</div>
+                        <div class="summary-label">Declined Projects</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-icon">💰</div>
+                    <div class="summary-content">
+                        <div class="summary-value" id="total-value">$0</div>
+                        <div class="summary-label">Total Project Value</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters and Controls -->
+        <div class="controls-section">
+            <div class="controls-grid">
+                <div class="filter-group">
+                    <label for="filter-decision">Filter by Decision:</label>
+                    <select id="filter-decision">
+                        <option value="">All Decisions</option>
+                        <option value="DECLINE">Declined</option>
+                        <option value="PURSUE WITH HIGH MARGIN">High Margin</option>
+                        <option value="PURSUE WITH MODERATE MARGIN">Moderate Margin</option>
+                        <option value="PURSUE WITH STANDARD MARGIN">Standard Margin</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-client">Filter by Client Category:</label>
+                    <select id="filter-client">
+                        <option value="">All Categories</option>
+                        <option value="Development">Development</option>
+                        <option value="Leverage">Leverage</option>
+                        <option value="Nuisance">Nuisance</option>
+                        <option value="Avoid">Avoid</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sort-by">Sort by:</label>
+                    <select id="sort-by">
+                        <option value="date-desc">Date (Newest First)</option>
+                        <option value="date-asc">Date (Oldest First)</option>
+                        <option value="score-desc">Score (Highest First)</option>
+                        <option value="score-asc">Score (Lowest First)</option>
+                        <option value="value-desc">Value (Highest First)</option>
+                        <option value="value-asc">Value (Lowest First)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <button id="export-data" class="btn btn-secondary">Export Data</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Table -->
+        <div class="table-section">
+            <div class="table-header">
+                <h2>Assessment History</h2>
+                <div class="table-actions">
+                    <button id="clear-all-data" class="btn btn-danger">Clear All Data</button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table class="assessment-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Project Value</th>
+                            <th>Decision</th>
+                            <th>Client Category</th>
+                            <th>Work Category</th>
+                            <th>Total Score</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assessment-table-body">
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="no-data-message" class="no-data" style="display: none;">
+                <div class="no-data-content">
+                    <div class="no-data-icon">📝</div>
+                    <h3>No Assessments Yet</h3>
+                    <p>Complete your first assessment to see data here.</p>
+                    <a href="assessment.html" class="btn btn-primary">Start Assessment</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Detail Modal -->
+        <div id="detail-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Assessment Details</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Assessment details will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data-manager.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
